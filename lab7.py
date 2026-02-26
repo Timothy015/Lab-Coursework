@@ -31,6 +31,7 @@ def display_league():
     (display_team(east_league))
     print()
 
+    # Add a new team in
     west_league["winnipeg"] = 'jets'
 
     print("After adding winnipeg... ")
@@ -86,13 +87,32 @@ def get_smallest_province(this_dict):
     smallest_province = None
     smallest_pop = None
 
-    for province, info in this_dict.items():
-        population = info["population"]  # extract population number
-
+    for province, value in this_dict.items():
+        # First iteration
+        population = value["population"]
+        # Update if current population is smaller
         if smallest_pop is None or population < smallest_pop:
             smallest_province = province
             smallest_pop = population
     print(f"The smallest province in Canada is {smallest_province}")
+    return
+
+
+def get_largest_province(this_dict):
+    """Retrieves the largest province
+    :param this_dict: Dictionary containing province data
+    :return: Name of the largest province"""
+    largest_province = None
+    largest_pop = None
+
+    for province, value in this_dict.items():
+        # First iteration
+        population = value["population"]
+        # Update if current population is bigger
+        if largest_pop is None or population > largest_pop:
+            largest_province = province
+            largest_pop = population
+    print(f"The largest province in Canada is {largest_province}")
     return
 
 
@@ -120,6 +140,7 @@ def main():
     get_capital_city("british columbia", canada)
     get_largest_city("ontario", canada)
     get_smallest_province(canada)
+    get_largest_province(canada)
 
 
 if __name__ == "__main__":
