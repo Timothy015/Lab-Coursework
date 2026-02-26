@@ -80,7 +80,20 @@ def get_largest_city(province_name, this_dict):
 
 
 def get_smallest_province(this_dict):
-    """"""
+    """Retrieves the smallest province
+    :param this_dict: Dictionary containing province data
+    :return: Name of the smallest province in Canada"""
+    smallest_province = None
+    smallest_pop = None
+
+    for province, info in this_dict.items():
+        population = info["population"]  # extract population number
+
+        if smallest_pop is None or population < smallest_pop:
+            smallest_province = province
+            smallest_pop = population
+    print(f"The smallest province in Canada is {smallest_province}")
+    return
 
 
 def main():
@@ -106,6 +119,7 @@ def main():
     get_total_population(canada)
     get_capital_city("british columbia", canada)
     get_largest_city("ontario", canada)
+    get_smallest_province(canada)
 
 
 if __name__ == "__main__":
